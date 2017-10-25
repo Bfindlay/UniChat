@@ -4,7 +4,7 @@ import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk'
 import reducers from '../reducers';
 import { Text, View, TouchableOpacity } from 'react-native';
-import { Login, Home, MenuComponent } from './';
+import { Login, Home, MenuComponent, Chat } from './';
 import { Router, Stack, Scene } from 'react-native-router-flux'
 import { SideMenu, List, ListItem } from 'react-native-elements';
 
@@ -20,7 +20,7 @@ export default class App extends Component {
             <Stack key="root">
               <Scene key="Login" hideNavBar={true} component={Login} title="Login"/>
               <MenuComponent> 
-                <Scene key="Home" hideNavBar={true} component={Home} title="Home"/>
+                <Scene key="Home" hideNavBar={true} component={Chat} title="Home"/>
               </MenuComponent>
             </Stack>
           </Router>

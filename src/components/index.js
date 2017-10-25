@@ -5,3 +5,4 @@ export { default as RegisterForm } from './RegisterForm';
 export { default as Home } from './Home';
 export { default as MenuComponent} from './MenuComponent';
 export { default as ListMenu } from './ListMenu';
+export { default as Chat } from './Chat';

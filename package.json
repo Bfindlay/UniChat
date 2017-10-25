@@ -16,6 +16,7 @@
 		"react-native": "0.40.0",
 		"react-native-drawer": "^2.5.0",
 		"react-native-elements": "^0.17.0",
+		"react-native-reversed-flat-list": "^1.0.2",
 		"react-native-router-flux": "^4.0.0-beta.22",
 		"react-native-vector-icons": "^4.4.2",
 		"react-navigation": "^1.0.0-beta.15",
