@@ -4,7 +4,7 @@ import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk'
 import reducers from '../reducers';
 import { Text, View, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
-import { Login, Home, MenuComponent, Chat, ChatList, Profile } from './';
+import { Login, Home, MenuComponent, Chat, ChatList, Profile, CreateEvent, CreateGroup, Navbar } from './';
 import { Router, Stack, Scene } from 'react-native-router-flux'
 import { SideMenu, List, ListItem } from 'react-native-elements';
 import Menu, { MenuContext, MenuOptions, MenuOption, MenuTrigger } from 'react-native-menu';
@@ -15,9 +15,11 @@ export default class App extends Component {
 
 
   render() {
+    console.log('hello');
     const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
     return (
       <Provider store={store}>
+      
         <MenuContext style={{ flex: 1 }}>
           <TopNavigation />
           <Router>
@@ -26,9 +28,12 @@ export default class App extends Component {
               <Scene key="Chat" hideNavBar={true} component={Chat} title="Chat" />
               <Scene key="ChatList" hideNavBar={true} component={ChatList} title="Chat List" />
               <Scene key="Profile" hideNavBar={true} component={Profile} title="Profile" />
+              <Scene key="CreateEvent" hideNavBar={true} component={CreateEvent} title="Create Event" />
+              <Scene key="CreateGroup" hideNavBar={true} component={CreateGroup} title="Create Group" />
             </Stack>
           </Router>
         </MenuContext>
+       
       </Provider>
     )
   }
@@ -40,35 +45,45 @@ const TopNavigation = () => (
 
     <View style={{ flex: 1 }}><Text style={styles.title}> Chat </Text></View>
 
-    <Menu onSelect={(value) => { console.log("Testing")}}>
+    <Menu onSelect={(value) => { console.log("Testing") }}>
       <MenuTrigger>
         <Text style={{ fontSize: 20 }}>&#8942;</Text>
       </MenuTrigger>
       <MenuOptions optionsContainerStyle={styles.dropdownOptions}>
         <MenuOption value={1}>
-          <TouchableOpacity onPress={() => {Actions.Profile()}}>
+          <TouchableOpacity onPress={() => { Actions.Profile() }}>
             <Text style={styles.menuOption}>Profile</Text>
           </TouchableOpacity>
         </MenuOption>
         <MenuOption value={2}>
-        <TouchableOpacity onPress={() => {Actions.Chat()}}>
-        <Text style={styles.menuOption}>Messenger</Text>
-      </TouchableOpacity>
+          <TouchableOpacity onPress={() => { Actions.Chat() }}>
+            <Text style={styles.menuOption}>Messenger</Text>
+          </TouchableOpacity>
         </MenuOption>
         <MenuOption value={3}>
-        <TouchableOpacity onPress={() => {Actions.ChatList()}}>
-        <Text style={styles.menuOption}>Groups</Text>
-      </TouchableOpacity>
+          <TouchableOpacity onPress={() => { Actions.ChatList() }}>
+            <Text style={styles.menuOption}>Groups</Text>
+          </TouchableOpacity>
         </MenuOption>
         <MenuOption value={4}>
-        <TouchableOpacity onPress={() => {Actions.Chat()}}>
-        <Text style={styles.menuOption}>Events</Text>
-      </TouchableOpacity>
+          <TouchableOpacity onPress={() => { Actions.Chat() }}>
+            <Text style={styles.menuOption}>Events</Text>
+          </TouchableOpacity>
         </MenuOption>
         <MenuOption value={5}>
-        <TouchableOpacity onPress={() => {Actions.Chat()}}>
-        <Text style={styles.menuOption}>Log Out</Text>
-      </TouchableOpacity>
+          <TouchableOpacity onPress={() => { Actions.CreateEvent() }}>
+            <Text style={styles.menuOption}>Create Event</Text>
+          </TouchableOpacity>
+        </MenuOption>
+        <MenuOption value={6}>
+        <TouchableOpacity onPress={() => { Actions.CreateGroup() }}>
+          <Text style={styles.menuOption}>Create Group</Text>
+        </TouchableOpacity>
+      </MenuOption>
+        <MenuOption value={7}>
+          <TouchableOpacity onPress={() => { Actions.Chat() }}>
+            <Text style={styles.menuOption}>Log Out</Text>
+          </TouchableOpacity>
         </MenuOption>
       </MenuOptions>
     </Menu>

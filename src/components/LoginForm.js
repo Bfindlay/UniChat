@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Alert, Button, StyleSheet, StatusBar } from 'react-native';
-import { switchForm } from '../actions';
+import { switchForm, logIn } from '../actions';
 import { Actions } from 'react-native-router-flux'
 const onButtonPress = () => {
     Alert.alert('Button has been pressed!');
@@ -16,7 +16,8 @@ class LoginForm extends Component {
     }
 
     login(){
-        Actions.Home();
+        this.props.logIn();
+        Actions.Profile();
     }
     setRegister(){
         this.props.switchForm('Register');
@@ -92,4 +93,4 @@ const mapStateToProps = ({app})  => {
 }
 
 //make this component available to the app
-export default connect(mapStateToProps, { switchForm })(LoginForm);
+export default connect(mapStateToProps, { switchForm, logIn })(LoginForm);
