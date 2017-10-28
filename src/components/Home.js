@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet, KeyboardAvoidingView } from 'react-native';
 import { LoginForm, RegisterForm, MenuComponent } from './';
+import Menu, { MenuContext, MenuOptions, MenuOption, MenuTrigger } from 'react-native-menu';
 
 class Home extends Component {
 
@@ -15,15 +16,15 @@ class Home extends Component {
     render() {
 
         return (
-            <MenuComponent>
+            <MenuContext style={{ flex: 1 }}>
                 <View style={styles.container}>
                     <Text style={styles.titel}> HELLOOO </Text>
                 </View>
-            </MenuComponent>
-
+            </MenuContext>
         );
     }
 }
+
 
 // define your styles
 const styles = StyleSheet.create({

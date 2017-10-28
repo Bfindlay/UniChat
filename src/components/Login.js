@@ -8,7 +8,6 @@ class Login extends Component {
 
 
     renderComponent() {
-        console.log(this.props.homeComponent);
         switch (this.props.homeComponent) {
             case 'Login':
                 return <LoginForm />
@@ -17,6 +16,7 @@ class Login extends Component {
         }
     }
     render() {
+        console.log('rendered');
         return (
             <KeyboardAvoidingView behavior="padding" style={styles.container}>
 
