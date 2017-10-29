@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Alert, Button, StyleSheet, StatusBar } from 'react-native';
-import { switchForm } from '../actions';
+import { switchForm , setTitle} from '../actions';
 import { connect } from 'react-redux';
 // create a component
 class RegisterForm extends Component {
@@ -9,6 +9,10 @@ class RegisterForm extends Component {
     setLogin(){
         this.props.switchForm('Login');
     }
+    componentWillMount(){
+        this.props.setTitle('Register');
+      }
+
     render() {
         return (
             <View style={styles.container}>
@@ -94,4 +98,4 @@ const mapStateToProps = ({app})  => {
 }
 
 //make this component available to the app
-export default connect(mapStateToProps, { switchForm })(RegisterForm);
+export default connect(mapStateToProps, { switchForm, setTitle })(RegisterForm);

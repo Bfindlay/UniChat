@@ -1,8 +1,6 @@
 import React, { Component } from "react"
 import { Card, Rating } from "react-native-elements"
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { connect } from 'react-redux';
-import { setTitle } from '../actions'
 import {
     Animated,
     Dimensions,
@@ -16,7 +14,7 @@ import {
     View,
 } from "react-native"
 import { TabViewAnimated, TabBar } from "react-native-tab-view"
-import ProfileFeed from "./ProfileFeed"
+import EventFeed from "./EventFeed"
 
 const styles = StyleSheet.create({
     cardWrapper: {
@@ -28,6 +26,9 @@ const styles = StyleSheet.create({
         margin: 0,
         borderWidth: 0,
         backgroundColor: "#fff",
+    },
+    pad:{
+        padding: 20,
     },
     cardHeaderContainer: {
         marginTop: 45,
@@ -94,10 +95,10 @@ const styles = StyleSheet.create({
 })
 
 const contact = {
-    imgUrl: "https://www.petfinder.com/wp-content/uploads/2012/11/91615172-find-a-lump-on-cats-skin-632x475.jpg",
+    imgUrl: "https://pbs.twimg.com/profile_images/512021063509626880/QUga2R6j_reasonably_small.jpeg",
     imgBackground:
     "https://orig00.deviantart.net/dcd7/f/2014/027/2/0/mountain_background_by_pukahuna-d73zlo5.png",
-    name: "Cat",
+    name: "Study Group",
     postion: "Front-end Engineer",
     country: "Thailand",
     city: "Bangkok",
@@ -130,7 +131,7 @@ const {
     feeds,
 } = contact
 
-class Profile extends Component {
+class EventInfo extends Component {
 
     static navigationOptions = {
         header: null,
@@ -139,15 +140,11 @@ class Profile extends Component {
     state = {
         index: 0,
         routes: [
-            { key: "1", title: "Profile", count: '', icon: "fa-telegram" },
+            { key: "1", title: "View Feed", count: '', icon: "fa-telegram" },
             { key: "2", title: "Friends", count: 86, icon: "fa-thumbs-up" },
             { key: "3", title: "Posts", count: 95, icon: "fa-handshake" },
             { key: "4", title: "Groups", count: 2, icon: "fa-address-book" },
         ],
-    }
-
-    componentWillMount(){
-        this.props.setTitle('Profile');
     }
 
     _handleIndexChange = index => {
@@ -180,19 +177,9 @@ class Profile extends Component {
         )
     }
 
-    _renderScene = ({ route }) => {
-        switch (route.key) {
-            case "1":
-                return <ProfileFeed />
-            case "2":
-                return <ProfileFeed />
-            case "3":
-                return <ProfileFeed />
-            case "4":
-                return <ProfileFeed />
-            default:
-                return <View />
-        }
+    _renderScene = () => {
+        return <EventFeed />
+        
     }
 
     _renderLabel = props => ({ route, index }) => {
@@ -313,13 +300,9 @@ class Profile extends Component {
                 <View style={styles.cardWrapper}>
                     <Card containerStyle={styles.cardContainer}>
                         {this.renderContactHeader()}
-                        <TabViewAnimated
-                            style={[styles.container, this.props.style]}
-                            navigationState={this.state}
-                            renderScene={this._renderScene}
-                            renderHeader={this._renderHeader}
-                            onIndexChange={this._handleIndexChange}
-                        />
+                        <View style={styles.pad}>
+                            { this._renderScene()}
+                        </View> 
                     </Card>
                 </View>
             </ScrollView>
@@ -327,14 +310,7 @@ class Profile extends Component {
     }
 }
 
-const mapStateToProps = ({app})  => {
-    const { homeComponent } = app;
-    return { homeComponent }
-}
-
-//make this component available to the app
-export default connect(mapStateToProps, { setTitle })(Profile);
-
+export default EventInfo;
 
 
 

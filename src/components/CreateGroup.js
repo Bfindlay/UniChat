@@ -37,6 +37,7 @@ export default class CreateGroup extends React.Component {
 
     renderItem({ item }) {
         return (
+           
             <View style={styles.row} key={Math.random()} >
                 <Image style={styles.avatar} source={{ uri: item.avatar }} />
                 <View style={styles.rowText}>
@@ -44,6 +45,7 @@ export default class CreateGroup extends React.Component {
                     <Text style={styles.message}>{item.message}</Text>
                 </View>
             </View>
+            
         );
     }
 

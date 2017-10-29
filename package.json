@@ -19,6 +19,7 @@
 		"react-native-menu": "^0.23.0",
 		"react-native-reversed-flat-list": "^1.0.2",
 		"react-native-router-flux": "^4.0.0-beta.22",
+		"react-native-settings-list": "^1.7.1",
 		"react-native-vector-icons": "^4.4.2",
 		"react-navigation": "^1.0.0-beta.15",
 		"react-redux": "^5.0.1",

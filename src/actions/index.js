@@ -1,7 +1,8 @@
 import { 
     SWITCH_FORM_COMPONENT,
     LOG_IN,
-    LOG_OUT
+    LOG_OUT,
+    TITLE
 } from './types';
 import { Actions } from 'react-native-router-flux'
 
@@ -24,5 +25,12 @@ export const logOut = () =>{
     return {
         type : LOG_OUT,
         payload : true
+    }
+}
+
+export const setTitle = title => {
+    return {
+        type : TITLE,
+        payload : title
     }
 }

@@ -10,7 +10,7 @@ class Navbar extends Component {
     render(){
         const { mainContainer, nav, childContainer, iconRow, icon } = styles;
         const { loggedIn } = this.props;
-        console.log('logged in', loggedIn);
+        console.log('nav bar', loggedIn);
         if(loggedIn){
             return (
                 <View style={mainContainer} >
@@ -19,7 +19,7 @@ class Navbar extends Component {
                     </View>
                     <View style={ nav } >
                         <View style={ iconRow }>
-                            <TouchableOpacity onPress={() => Actions.scanner()}><Icon name="group" size={25} color="#fff" /></TouchableOpacity>
+                            <TouchableOpacity onPress={() => Actions.FriendRequests()}><Icon name="group" size={25} color="#fff" /></TouchableOpacity>
                             <TouchableOpacity onPress={() => Actions.Profile()}><Icon name="bars" size={25} color="#fff" /></TouchableOpacity>
                             <TouchableOpacity onPress={() => Actions.ChatList()}><Icon name="commenting" size={25} color="#fff" /></TouchableOpacity>
                         </View>
@@ -50,7 +50,7 @@ const styles = {
     nav: {
         backgroundColor: '#2c3e50',
         flex: 1,
-        marginTop : 2
+
     },
     iconRow:{
         flex:1,
@@ -64,8 +64,7 @@ const styles = {
     }
 }
 
-const mapStateToProps = (state) => {
-
-   return { loggedIn : state.loggedIn};
+const mapStateToProps = ({app}) => {
+   return { loggedIn : app.loggedIn};
 }
 export default connect(mapStateToProps, { })(Navbar);

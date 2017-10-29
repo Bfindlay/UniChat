@@ -12,3 +12,7 @@ export { default as ProfileFeed } from './ProfileFeed'
 export { default as CreateEvent } from './CreateEvent';
 export { default as CreateGroup } from './CreateGroup';
 export { default as Navbar } from './Navbar';
+export { default as FriendRequests } from './FriendRequests';
+export { default as EventInfo } from './EventInfo';
+export { default as Permissions } from './Permissions';
+export { default as TopNavigation } from './TopNavigation';

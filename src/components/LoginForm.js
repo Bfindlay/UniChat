@@ -1,12 +1,8 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Alert, Button, StyleSheet, StatusBar } from 'react-native';
-import { switchForm, logIn } from '../actions';
+import { switchForm, logIn, setTitle } from '../actions';
 import { Actions } from 'react-native-router-flux'
-const onButtonPress = () => {
-    Alert.alert('Button has been pressed!');
-
-};
 
 // create a component
 class LoginForm extends Component {
@@ -14,6 +10,10 @@ class LoginForm extends Component {
     constructor(props){
         super(props);
     }
+
+    componentWillMount(){
+        this.props.setTitle('Login');
+      }
 
     login(){
         this.props.logIn();
@@ -93,4 +93,4 @@ const mapStateToProps = ({app})  => {
 }
 
 //make this component available to the app
-export default connect(mapStateToProps, { switchForm, logIn })(LoginForm);
+export default connect(mapStateToProps, { switchForm, logIn, setTitle })(LoginForm);

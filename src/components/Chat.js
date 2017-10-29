@@ -10,21 +10,22 @@ import {
     FlatList,
     Image,
 } from 'react-native';
-
-
+import { connect } from 'react-redux';
+import { setTitle } from '../actions'
+import { Actions } from 'react-native-router-flux'
 const NAME = '@UniPerson';
 const CHANNEL = 'Random';
 const AVATAR =
     'https://www.petfinder.com/wp-content/uploads/2012/11/91615172-find-a-lump-on-cats-skin-632x475.jpg';
 
-export default class Chat extends React.Component {
+class Chat extends React.Component {
     state = {
         typing: '',
         messages: ['Hello'],
     };
 
     componentWillMount() {
-
+        this.props.setTitle('Group Chat');
     }
 
     sendMessage = () => {
@@ -68,6 +69,9 @@ export default class Chat extends React.Component {
                         keyExtractor={item => Math.random()}
                     />
                     <KeyboardAvoidingView behavior="padding">
+                    <TouchableOpacity onPress={() => {Actions.CreateEvent()}}>
+                    <Text style={styles.end}>Create Event</Text>
+                    </TouchableOpacity>
                         <View style={styles.footer}>
                             <TextInput
                                 value={this.state.typing}
@@ -81,11 +85,26 @@ export default class Chat extends React.Component {
                             </TouchableOpacity>
                         </View>
                     </KeyboardAvoidingView>
+                   
                 </View>
             </View>
         );
     }
 }
+
+const mapStateToProps = ({app})  => {
+    const { homeComponent } = app;
+    return { homeComponent }
+}
+
+//make this component available to the app
+export default connect(mapStateToProps, { setTitle })(Chat);
+
+
+
+
+
+
 
 const styles = StyleSheet.create({
     mainContainer:{
@@ -110,6 +129,12 @@ const styles = StyleSheet.create({
     },
     rowText: {
         flex: 1,
+    },
+    end: {
+        margin: 10,
+        alignSelf: 'center',
+        fontSize: 12,
+        color: 'grey',
     },
     message: {
         fontSize: 18,

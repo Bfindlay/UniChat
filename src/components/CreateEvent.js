@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { Text, Image, StyleSheet, KeyboardAvoidingView, View, TextInput, TouchableOpacity, Alert, Button, StatusBar } from 'react-native';
 import { LoginForm, RegisterForm } from './';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { Actions } from 'react-native-router-flux'
+
 // create a component
 class CreateEvent extends Component {
 
@@ -50,7 +52,7 @@ class CreateEvent extends Component {
                             placeholder='+ Add Friends'
                             placeholderTextColor='rgba(225,225,225,0.7)' />
                         {/*   <Button onPress={onButtonPress} title = 'Login' style={styles.loginButton} /> */}
-                        <TouchableOpacity style={styles.buttonContainer} >
+                        <TouchableOpacity onPress={() =>{Actions.EventInfo()}} style={styles.buttonContainer} >
                             <Text style={styles.buttonText}>Create Event</Text>
                         </TouchableOpacity>
                     </View>
@@ -59,6 +61,9 @@ class CreateEvent extends Component {
         );
     }
 }
+
+
+
 
 // define your styles
 const styles = StyleSheet.create({

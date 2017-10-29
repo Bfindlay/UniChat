@@ -1,11 +1,13 @@
 import { 
     SWITCH_FORM_COMPONENT,
     LOG_IN,
-    LOG_OUT
+    LOG_OUT,
+    TITLE
 } from '../actions/types';
 const INITIAL_STATE = { 
     homeComponent: 'Login',
-    loggedIn : false
+    loggedIn : false,
+    title : 'Login'
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -19,6 +21,9 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, loggedIn : true}
         }case LOG_OUT :{
             return { ...state, loggedIn : false}
+        }
+        case TITLE:{
+            return {...state, title: action.payload}
         }
         default:
             return state;

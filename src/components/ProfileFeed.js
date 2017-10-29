@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import SinglePost from './SinglePost';
-import { StyleSheet, Button, View, Icon,Text, ScrollView } from 'react-native';
+import { StyleSheet, Button, View, Text, ScrollView, TextInput, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-
-const mapStateToProps = ({ App }) => ({ App});
+const mapStateToProps = ({ App }) => ({ App });
 
 
 const renderPost = (post, index) => (
@@ -14,13 +14,13 @@ const renderPost = (post, index) => (
     key={index}
     name={post.name}
     username={post.username}
-    profilePicture={post.profilePicture}
+    avatar={post.avatar}
     content={post.content}
   />
 )
 
 export default class ProfileFeed extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       posts: [
@@ -57,29 +57,48 @@ export default class ProfileFeed extends Component {
   }
 
 
-  render(){
+  render() {
     const { posts } = this.state;
     const endMsg = posts.length === 0 ? "There aren't any posts yet!" : "That's all the posts for now!"
 
     return (
       <View>
-      <View>
-        <ScrollView>
-          {
-            posts.map(post => {
-              return renderPost(post, Math.random());
-            })
-          }
-        </ScrollView>
-        <Text style={styles.end}>{endMsg}</Text>
+        <View>
+          <View style={styles.post}>
+            <TextInput
+              value={this.state.typing}
+              style={styles.input}
+              underlineColorAndroid="transparent"
+              placeholder="Create a post..."
+              onChangeText={text => this.setState({ typing: text })}
+            />
+            <View style={styles.sendPost}>
+              <TouchableOpacity>
+                <Icon name="send" size={15} color="#000" style={styles.icon} />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Icon name="cog" size={15} color="#000" style={styles.icon} />
+              </TouchableOpacity>
+            </View>
+          </View>
+          <View>
+          </View>
+          <ScrollView>
+            {
+              posts.map(post => {
+                return renderPost(post, Math.random());
+              })
+            }
+          </ScrollView>
+          <Text style={styles.end}>{endMsg}</Text>
+        </View>
+        <Button
+          onPress={() => { }}
+          title="View More"
+          color="#2c3e50"
+          accessibilityLabel="Learn more about this purple button"
+        />
       </View>
-      <Button
-      onPress= {() => {} }
-      title="View More"
-      color="#2c3e50"
-      accessibilityLabel="Learn more about this purple button"
-    />
-    </View>
     );
   }
 }
@@ -87,6 +106,31 @@ export default class ProfileFeed extends Component {
 const styles = StyleSheet.create({
   container: {
     marginTop: 64,
+  },
+  sendPost:{
+    flex: 1,
+    flexDirection:  'row'
+  },
+  input: {
+    paddingHorizontal: 20,
+    fontSize: 18,
+    flex: 1,
+    height: 40
+  },
+  post: {
+    paddingTop: 15,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center'
+  },
+  permissions: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center'
+  },
+  icon: {
+    padding: 3,
+    paddingRight: 5
   },
   button: {
     position: 'absolute',
