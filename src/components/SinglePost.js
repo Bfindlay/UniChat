@@ -2,10 +2,15 @@ import React, { Component } from 'react';
 import { ListItem, Text, StyleSheet, View, Image, TouchableOpacity, TextInput, KeyboardAvoidingView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Actions } from 'react-native-router-flux'
+import Prompt from 'react-native-prompt';
 export default class SinglePost extends Component {
 
     constructor(props) {
-        super(props)
+        super(props);
+        this.state = {
+            promptVisible: false,
+            message : ''
+        }
     }
     render() {
         console.log(this.props);
@@ -16,12 +21,25 @@ export default class SinglePost extends Component {
                     <View style={styles.rowText}>
                         <Text style={styles.sender}>{this.props.username}</Text>
                         <Text style={styles.message}>{this.props.content}</Text>
-                        <TouchableOpacity onPress={() => { }}><Icon name="commenting" size={12} color="grey" /></TouchableOpacity>
+                        <TouchableOpacity onPress={() => { this.setState({promptVisible : true})}}><Icon name="commenting" size={12} color="grey" /></TouchableOpacity>
                     </View>
                     <TouchableOpacity onPress={() => { Actions.Permissions()}}><Icon name="cog" size={12} color="grey" /></TouchableOpacity>
                 </View>
                 <View>
                 </View>
+                <Prompt
+                    title="Post a comment"
+                    placeholder="Start typing"
+                    defaultValue=""
+                    visible={ this.state.promptVisible }
+                    onCancel={ () => this.setState({
+                    promptVisible: false,
+                    message: "You cancelled"
+                    }) }
+                    onSubmit={ (value) => this.setState({
+                    promptVisible: false,
+                    message: `You said "${value}"`
+                    })}/>
             </View>
         )
     }

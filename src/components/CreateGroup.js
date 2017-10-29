@@ -11,14 +11,17 @@ import {
     Image,
 } from 'react-native';
 
+import { connect } from 'react-redux';
+import { setTitle } from '../actions'
+
+
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const NAME = '@UniPerson';
 const CHANNEL = 'Random';
 const AVATAR =
     'https://www.petfinder.com/wp-content/uploads/2012/11/91615172-find-a-lump-on-cats-skin-632x475.jpg';
-
-export default class CreateGroup extends React.Component {
+class CreateGroup extends React.Component {
     state = {
         typing: '',
         messages: [{
@@ -34,6 +37,10 @@ export default class CreateGroup extends React.Component {
             message: 'Chat Group Invite sent to @UniPerson',
         }],
     };
+
+    componentWillMount(){
+        this.props.setTitle('Create Group');
+    }
 
     renderItem({ item }) {
         return (
@@ -92,6 +99,15 @@ export default class CreateGroup extends React.Component {
         );
     }
 }
+
+
+const mapStateToProps = ({ app }) => {
+    const { homeComponent } = app;
+    return { homeComponent }
+}
+
+//make this component available to the app
+export default connect(mapStateToProps, {setTitle})(CreateGroup);
 
 const styles = StyleSheet.create({
     mainContainer: {

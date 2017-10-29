@@ -14,7 +14,7 @@ const renderPost = (post, index) => (
         key={index}
         name={post.name}
         username={post.username}
-        profilePicture={post.profilePicture}
+        avatar={post.avatar}
         content={post.content}
     />
 )

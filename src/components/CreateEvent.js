@@ -1,13 +1,17 @@
-import { connect } from 'react-redux';
+
 import React, { Component } from 'react';
 import { Text, Image, StyleSheet, KeyboardAvoidingView, View, TextInput, TouchableOpacity, Alert, Button, StatusBar } from 'react-native';
 import { LoginForm, RegisterForm } from './';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Actions } from 'react-native-router-flux'
-
+import { setTitle } from '../actions'
+import { connect } from 'react-redux';
 // create a component
 class CreateEvent extends Component {
 
+    componentWillMount(){
+        this.props.setTitle('Create Event');
+    }
 
     render() {
         console.log('rendered');
@@ -157,4 +161,4 @@ const mapStateToProps = ({ app }) => {
 }
 
 //make this component available to the app
-export default CreateEvent;
+export default connect(mapStateToProps, {setTitle})(CreateEvent);

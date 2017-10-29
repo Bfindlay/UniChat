@@ -73,10 +73,10 @@ export default class ProfileFeed extends Component {
               onChangeText={text => this.setState({ typing: text })}
             />
             <View style={styles.sendPost}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => {alert("Post Created")}}>
                 <Icon name="send" size={15} color="#000" style={styles.icon} />
               </TouchableOpacity>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={()=> {Actions.Permissions()}}>
                 <Icon name="cog" size={15} color="#000" style={styles.icon} />
               </TouchableOpacity>
             </View>

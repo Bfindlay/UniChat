@@ -263,25 +263,7 @@ class Profile extends Component {
                     }}
                 >
                     <View>
-                        <Icon
-                            name="group"
-                            color="#3B5A98"
-
-                        />
-                    </View>
-                    <View style={{ marginLeft: 14, marginRight: 14 }}>
-                        <Icon
-                            name="group"
-                            color="#3B5A98"
-
-                        />
-                    </View>
-                    <View>
-                        <Icon
-                            name="group"
-                            color="#3B5A98"
-
-                        />
+                        <Text>I like maths and donuts </Text>
                     </View>
                 </View>
             </View>

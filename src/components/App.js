@@ -11,6 +11,8 @@ import Menu, { MenuContext, MenuOptions, MenuOption, MenuTrigger } from 'react-n
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Actions } from 'react-native-router-flux'
 
+console.disableYellowBox = true;
+
  class App extends Component {
 
 

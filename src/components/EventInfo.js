@@ -15,6 +15,8 @@ import {
 } from "react-native"
 import { TabViewAnimated, TabBar } from "react-native-tab-view"
 import EventFeed from "./EventFeed"
+import { setTitle } from '../actions'
+import { connect } from 'react-redux';
 
 const styles = StyleSheet.create({
     cardWrapper: {
@@ -145,6 +147,10 @@ class EventInfo extends Component {
             { key: "3", title: "Posts", count: 95, icon: "fa-handshake" },
             { key: "4", title: "Groups", count: 2, icon: "fa-address-book" },
         ],
+    }
+
+    componentWillMount(){
+        this.props.setTitle('Event Info');
     }
 
     _handleIndexChange = index => {
@@ -310,8 +316,11 @@ class EventInfo extends Component {
     }
 }
 
-export default EventInfo;
+const mapStateToProps = ({ app }) => {
+    const { homeComponent } = app;
+    return { homeComponent }
+}
 
-
-
+//make this component available to the app
+export default connect(mapStateToProps, {setTitle})(EventInfo);
 

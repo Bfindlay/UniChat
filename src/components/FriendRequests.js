@@ -51,8 +51,12 @@ class FriendRequests extends React.Component {
                     <Text style={styles.message}>{item.message}</Text>
                 </View>
                 <View style={styles.iconRow}>
+                <TouchableOpacity>
                 <Icon name="check" size={20} color="#00FF00" style={styles.icon} />
+                </TouchableOpacity>
+                <TouchableOpacity>
                 <Icon name="remove" size={20} color='#FF0000' style={styles.icon} />
+                </TouchableOpacity>
             </View>
             </View>
         );

@@ -106,6 +106,10 @@ class ChatList extends React.Component {
                         renderItem={this.renderItem}
                         keyExtractor={item => Math.random()}
                     />
+                    <TouchableOpacity onPress={() => {Actions.CreateGroup()}}>
+                    <Text style={styles.end}>Create Group</Text>
+                    </TouchableOpacity>
+                    
                 </View>
             </View>
         );
@@ -130,6 +134,12 @@ const styles = StyleSheet.create({
     mainContainer: {
         flex: 1,
         backgroundColor: '#2c3e50'
+    },
+    end: {
+        margin: 10,
+        alignSelf: 'center',
+        fontSize: 12,
+        color: 'grey',
     },
     container: {
         flex: 1,

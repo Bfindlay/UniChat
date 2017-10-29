@@ -102,10 +102,6 @@ export default connect(mapStateToProps, { setTitle })(Chat);
 
 
 
-
-
-
-
 const styles = StyleSheet.create({
     mainContainer:{
         flex: 1,
