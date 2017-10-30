@@ -17,7 +17,7 @@ export default class SinglePost extends Component {
         return (
             <View>
                 <View style={styles.row} key={Math.random()} >
-                    <Image style={styles.avatar} source={{ uri: this.props.avatar }} />
+                    <Image style={styles.avatar} source={require('../util/avatar2.jpg')} />
                     <View style={styles.rowText}>
                         <Text style={styles.sender}>{this.props.username}</Text>
                         <Text style={styles.message}>{this.props.content}</Text>

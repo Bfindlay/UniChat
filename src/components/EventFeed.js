@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import SinglePost from './SinglePost';
 import { StyleSheet, Button, View, Icon, Text, ScrollView } from 'react-native';
-
+import Hr from 'react-native-hr';
 
 const mapStateToProps = ({ App }) => ({ App });
 
@@ -28,14 +28,14 @@ export default class EventFeed extends Component {
                     index: 1,
                     name: 'Cat',
                     username: 'Person',
-                    avatar: 'https://www.petfinder.com/wp-content/uploads/2012/11/91615172-find-a-lump-on-cats-skin-632x475.jpg',
+                    avatar: require('../util/avatar.jpg'),
                     content: 'Cant wait to go to this event!'
                 },
                 {
                     index: 1,
                     name: 'Cat',
                     username: 'UniPerson',
-                    avatar: 'https://www.petfinder.com/wp-content/uploads/2012/11/91615172-find-a-lump-on-cats-skin-632x475.jpg',
+                    avatar: require('../util/avatar2.jpg'),
                     content: 'This looks like fun!'
                 },
             ]
@@ -75,6 +75,12 @@ export default class EventFeed extends Component {
                 <View>
                     {this.renderInfo()}
                     <Text style={styles.title}> 2 Friends Attending </Text>
+                    <Hr lineColor='grey' 
+                    lineStyle={{
+                        backgroundColor: "blue",
+                        height: 2
+                     }}
+                  />
                     <ScrollView>
                         {
                             posts.map(post => {

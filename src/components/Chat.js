@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {
     StyleSheet,
     Text,
@@ -18,11 +18,16 @@ const CHANNEL = 'Random';
 const AVATAR =
     'https://www.petfinder.com/wp-content/uploads/2012/11/91615172-find-a-lump-on-cats-skin-632x475.jpg';
 
-class Chat extends React.Component {
-    state = {
-        typing: '',
-        messages: ['Hello'],
-    };
+class Chat extends Component {
+    
+    constructor(props){
+        super(props);
+        this.state = {
+            typing: '',
+            inc : 0,
+            messages: [],
+        };
+    }
 
     componentWillMount() {
         this.props.setTitle('Group Chat');
@@ -33,14 +38,17 @@ class Chat extends React.Component {
         const message = this.state.typing;
     
         // send message to our channel, with sender name
+        let count = this.state.inc;
+        let img = (count % 2 == 0) ?  require('../util/avatar2.jpg' ): require('../util/avatar.jpg');
+        let person = (count % 2 == 0) ? '@Cat' : '@UniPerson'
+        this.setState({inc: count+1});
         let m = {
-          channel: CHANNEL,
-          sender: NAME,
-          avatar: AVATAR,
-          message,
-        };
-        
-        this.setState({ messages : this.state.messages.concat([m])})
+            channel: 'Maths',
+            sender: person,
+            avatar: img,
+            message,
+          };
+          this.setState({messages: this.state.messages.concat([m])});
         // set the component state (clears text input)
         this.setState({
           typing: '',
@@ -50,7 +58,7 @@ class Chat extends React.Component {
     renderItem({ item }) {
         return (
             <View style={styles.row} key={Math.random()} >
-                <Image style={styles.avatar} source={{ uri: item.avatar }} />
+                <Image style={styles.avatar} source={item.avatar} />
                 <View style={styles.rowText}>
                     <Text style={styles.sender}>{item.sender}</Text>
                     <Text style={styles.message}>{item.message}</Text>
@@ -65,7 +73,7 @@ class Chat extends React.Component {
                 <View style={styles.container}>
                     <FlatList
                         data={this.state.messages}
-                        renderItem={this.renderItem}
+                        renderItem={this.renderItem.bind(this)}
                         keyExtractor={item => Math.random()}
                     />
                     <KeyboardAvoidingView behavior="padding">
@@ -77,7 +85,7 @@ class Chat extends React.Component {
                                 value={this.state.typing}
                                 style={styles.input}
                                 underlineColorAndroid="transparent"
-                                placeholder="Sag etwas..."
+                                placeholder="Say Something"
                                 onChangeText={text => this.setState({ typing: text })}
                             />
                             <TouchableOpacity onPress={this.sendMessage}>

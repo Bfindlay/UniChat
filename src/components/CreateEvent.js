@@ -1,12 +1,41 @@
 
 import React, { Component } from 'react';
-import { Text, Image, StyleSheet, KeyboardAvoidingView, View, TextInput, TouchableOpacity, Alert, Button, StatusBar } from 'react-native';
+import { Text, Image, StyleSheet,     Platform,KeyboardAvoidingView, View, TextInput, TouchableOpacity, Alert, Button, StatusBar } from 'react-native';
 import { LoginForm, RegisterForm } from './';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Actions } from 'react-native-router-flux'
 import { setTitle } from '../actions'
 import { connect } from 'react-redux';
 // create a component
+
+
+const contact = {
+    imgUrl: require('../util/avatar3.jpeg'),
+    imgBackground:
+    "h",
+    name: "Study Group",
+    postion: "Front-end Engineer",
+    country: "Thailand",
+    city: "Bangkok",
+    tels: [
+        { id: 1, name: "Mobile", number: "+66 (089)-928-2134" },
+        { id: 2, name: "Work", number: "+41 (112)-435-9887" },
+    ],
+    emails: [
+        { id: 1, name: "Personal", email: "elsie-goodman@mail.com" },
+        { id: 2, name: "Work", email: "elsie@work.com" },
+    ],
+    feeds: [
+        {
+            id: 1,
+            name: "",
+            image:
+            "",
+        },
+    ],
+}
+
+
 class CreateEvent extends Component {
 
     componentWillMount(){
@@ -18,9 +47,32 @@ class CreateEvent extends Component {
         return (
             <KeyboardAvoidingView behavior="padding" style={styles.container}>
                 <View style={styles.container}>
-                    <View style={styles.loginContainer}>
-                        <Text style={styles.title}>Create Group Event</Text>
-                    </View>
+
+                <View style={styles.imageContainer}>
+                <View
+                    style={{
+                        marginBottom: 12,
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        alignItems: "center",
+                    }}
+                >
+                    <Image
+                        style={styles.image}
+                        source={require('../util/avatar3.jpeg')}
+                    />
+                </View>
+                <View
+                    style={{
+                        flexDirection: "row",
+                    }}
+                >
+                   
+                </View>
+                
+            </View>
+
+
                     <View style={styles.formContainer}>
                         <StatusBar barStyle="light-content" />
                         <TextInput style={styles.input}
@@ -30,7 +82,7 @@ class CreateEvent extends Component {
                             keyboardType='email-address'
                             returnKeyType="next"
                             placeholder='Event Name'
-                            placeholderTextColor='rgba(225,225,225,0.7)' />
+                            placeholderTextColor='black' />
                         <TextInput style={styles.input}
                             autoCapitalize="none"
                             onSubmitEditing={() => this.passwordInput.focus()}
@@ -38,7 +90,7 @@ class CreateEvent extends Component {
                             keyboardType='ascii-capable'
                             returnKeyType="next"
                             placeholder='Event Date'
-                            placeholderTextColor='rgba(225,225,225,0.7)' />
+                            placeholderTextColor='black' />
                         <TextInput style={styles.input}
                             autoCapitalize="none"
                             onSubmitEditing={() => this.passwordInput.focus()}
@@ -46,7 +98,7 @@ class CreateEvent extends Component {
                             keyboardType='email-address'
                             returnKeyType="next"
                             placeholder='Description'
-                            placeholderTextColor='rgba(225,225,225,0.7)' />
+                            placeholderTextColor='black' />
                         <TextInput style={styles.input}
                             autoCapitalize="none"
                             onSubmitEditing={() => this.passwordInput.focus()}
@@ -54,7 +106,7 @@ class CreateEvent extends Component {
                             keyboardType='email-address'
                             returnKeyType="next"
                             placeholder='+ Add Friends'
-                            placeholderTextColor='rgba(225,225,225,0.7)' />
+                            placeholderTextColor='black' />
                         {/*   <Button onPress={onButtonPress} title = 'Login' style={styles.loginButton} /> */}
                         <TouchableOpacity onPress={() =>{Actions.EventInfo()}} style={styles.buttonContainer} >
                             <Text style={styles.buttonText}>Create Event</Text>
@@ -73,9 +125,22 @@ class CreateEvent extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#2c3e50',
+        backgroundColor: '#fff',
         
         justifyContent: 'center'
+    },
+    imageContainer: {
+        backgroundColor: "transparent",
+        ...Platform.select({
+            ios: {
+                alignItems: "center",
+                elevation: 1,
+                marginTop: -1,
+            },
+            android: {
+                alignItems: "center",
+            },
+        }),
     },
     end: {
         margin: 10,
@@ -88,8 +153,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
+    image: {
+        borderRadius: 40,
+        height: 80,
+        marginBottom: 10,
+        width: 80,
+    },
     formContainer: {
-        padding: 20
+        padding: 20,
+        backgroundColor : '#fff'
     },
     logo: {
         position: 'absolute',
@@ -114,11 +186,11 @@ const styles = StyleSheet.create({
     },
     input: {
         height: 40,
-        backgroundColor: 'rgba(225,225,225,0.2)',
+        backgroundColor: 'rgba(225,225,255,0.2)',
         marginBottom: 10,
         textAlign: 'center',
         padding: 10,
-        color: '#fff'
+        color: '#000'
     },
     buttonContainer: {
         backgroundColor: '#2980b6',

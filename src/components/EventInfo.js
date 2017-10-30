@@ -244,9 +244,7 @@ class EventInfo extends Component {
                 >
                     <Image
                         style={styles.image}
-                        source={{
-                            uri: imgUrl,
-                        }}
+                        source={require('../util/avatar3.jpeg')}
                     />
                     <Text style={styles.contactHeaderName}>{name}</Text>
                 </View>
@@ -256,25 +254,7 @@ class EventInfo extends Component {
                     }}
                 >
                     <View>
-                        <Icon
-                            name="group"
-                            color="#3B5A98"
-
-                        />
-                    </View>
-                    <View style={{ marginLeft: 14, marginRight: 14 }}>
-                        <Icon
-                            name="group"
-                            color="#3B5A98"
-
-                        />
-                    </View>
-                    <View>
-                        <Icon
-                            name="group"
-                            color="#3B5A98"
-
-                        />
+                        <Text>Join this event if you want to study</Text>
                     </View>
                 </View>
             </View>

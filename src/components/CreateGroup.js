@@ -13,7 +13,7 @@ import {
 
 import { connect } from 'react-redux';
 import { setTitle } from '../actions'
-
+import { Actions } from 'react-native-router-flux'
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -91,7 +91,7 @@ class CreateGroup extends React.Component {
                             <Icon name="search" size={30} color="#fff" style={styles.search} />
                         </TouchableOpacity>
                     </View>
-                    <TouchableOpacity style={styles.buttonContainer} >
+                    <TouchableOpacity onPress={() => {Actions.ChatList()}}style={styles.buttonContainer} >
                         <Text style={styles.buttonText}>Create Group</Text>
                     </TouchableOpacity>
                 </View>

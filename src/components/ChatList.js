@@ -25,38 +25,38 @@ class ChatList extends React.Component {
         typing: '',
         messages: [{
             channel: 'Maths',
-            sender: 'Maths',
+            sender: 'Maths Group',
             avatar: AVATAR,
-            message: 'Maths',
+            message: 'Maths is fun',
         },
         {
             channel: 'Maths',
-            sender: 'Maths',
+            sender: 'CompSci',
             avatar: AVATAR,
-            message: 'Maths',
+            message: 'Whens that assignment due???',
         }, {
             channel: 'Maths',
-            sender: 'Maths',
+            sender: 'Food Chat',
             avatar: AVATAR,
-            message: 'Maths',
+            message: 'Whats for lunch??',
         },
         {
             channel: 'Maths',
-            sender: 'Maths',
+            sender: 'Random Group',
             avatar: AVATAR,
-            message: 'Maths',
+            message: 'I like trains',
         },
         {
             channel: 'Maths',
-            sender: 'Maths',
+            sender: 'Coffee Group',
             avatar: AVATAR,
-            message: 'Maths',
+            message: 'What is coffee?',
         },
         {
             channel: 'Maths',
-            sender: 'Maths',
+            sender: 'Science Group',
             avatar: AVATAR,
-            message: 'Maths',
+            message: '21?',
         },
         {
             channel: 'Maths',
@@ -70,7 +70,7 @@ class ChatList extends React.Component {
         return (
             <TouchableOpacity onPress={() => {Actions.Chat()}}>
             <View style={styles.row} key={Math.random()} >
-                <Image style={styles.avatar} source={{ uri: item.avatar }} />
+                <Image style={styles.avatar} source={require('../util/avatar2.jpg')} />
                 <View style={styles.rowText}>
                     <Text style={styles.sender}>{item.sender}</Text>
                     <Text style={styles.message}>{item.message}</Text>

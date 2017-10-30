@@ -11,6 +11,8 @@ import {
     ListView,
     Platform,
     ScrollView,
+    TouchableOpacity,
+    TouchableHighlight,
     StyleSheet,
     Text,
     View,
@@ -29,11 +31,16 @@ const styles = StyleSheet.create({
         borderWidth: 0,
         backgroundColor: "#fff",
     },
+    requestTitle:{
+        fontWeight :'bold'
+    },
     cardHeaderContainer: {
         marginTop: 45,
         marginBottom: 10,
     },
-
+    request:{
+        padding: 5
+    },
     contactHeaderName: {
         fontSize: 18,
         fontWeight: "bold",
@@ -94,7 +101,7 @@ const styles = StyleSheet.create({
 })
 
 const contact = {
-    imgUrl: "https://www.petfinder.com/wp-content/uploads/2012/11/91615172-find-a-lump-on-cats-skin-632x475.jpg",
+    imgUrl: "../util/avatar2.jpg",
     imgBackground:
     "https://orig00.deviantart.net/dcd7/f/2014/027/2/0/mountain_background_by_pukahuna-d73zlo5.png",
     name: "Cat",
@@ -251,9 +258,7 @@ class Profile extends Component {
                 >
                     <Image
                         style={styles.image}
-                        source={{
-                            uri: imgUrl,
-                        }}
+                        source={require('../util/avatar2.jpg')}
                     />
                     <Text style={styles.contactHeaderName}>{name}</Text>
                 </View>
@@ -266,6 +271,7 @@ class Profile extends Component {
                         <Text>I like maths and donuts </Text>
                     </View>
                 </View>
+                <TouchableOpacity style={styles.request} onPress={() => { alert("Friend Request Sent")}}><Text style={styles.requestTitle}>+ Add Friend</Text></TouchableOpacity>
             </View>
         </View>
     )
